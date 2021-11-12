@@ -1,0 +1,134 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "QueryMsg",
+  "anyOf": [
+    {
+      "type": "object",
+      "required": [
+        "entry"
+      ],
+      "properties": {
+        "entry": {
+          "type": "object",
+          "required": [
+            "author_xyz_id",
+            "coordinates"
+          ],
+          "properties": {
+            "author_xyz_id": {
+              "type": "string"
+            },
+            "coordinates": {
+              "$ref": "#/definitions/Coordinates"
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": [
+        "entries_for_xyz"
+      ],
+      "properties": {
+        "entries_for_xyz": {
+          "type": "object",
+          "required": [
+            "author_xyz_id"
+          ],
+          "properties": {
+            "author_xyz_id": {
+              "type": "string"
+            },
+            "limit": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "uint32",
+              "minimum": 0.0
+            },
+            "start_after": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": [
+        "entries_for_coordinates"
+      ],
+      "properties": {
+        "entries_for_coordinates": {
+          "type": "object",
+          "required": [
+            "coordinates"
+          ],
+          "properties": {
+            "coordinates": {
+              "$ref": "#/definitions/Coordinates"
+            },
+            "limit": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "uint32",
+              "minimum": 0.0
+            },
+            "start_after": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": [
+        "config"
+      ],
+      "properties": {
+        "config": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    }
+  ],
+  "definitions": {
+    "Coordinates": {
+      "type": "object",
+      "required": [
+        "x",
+        "y",
+        "z"
+      ],
+      "properties": {
+        "x": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "y": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "z": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    }
+  }
+}
